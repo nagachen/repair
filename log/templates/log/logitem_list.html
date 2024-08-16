@@ -1,0 +1,34 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<table class="table table-sm table-hover">
+    <thead>
+        <tr>
+            
+            <th>報修時間</th>
+            <th>報修主旨</th>
+            <th>報修人</th>
+            <th>狀態</th>
+            <th>更新時間<th>
+        </tr>
+    </thead>
+    <tbody>
+<!--如果你使用 Django 的 Generic View（如 ListView），
+Django 會自動為你查詢對應的模型，並將查詢結果作為 object_list 這個變數傳遞給模板。
+因此，如果你繼承了 ListView，那麼 logitem_list 就等同於 object_list。-->
+        {% for item in logitem_list%}
+        <tr>
+            <td>{{item.ctime}}</td>
+            <td>
+                <a href="{{item.id}}">{{item.subject}}</a>
+            </td>
+            <td>{{item.reporter}}</td>
+            <!--get_status_display: 是一个 Django 提供的特殊方法，用于获取字段的 choices 中定义的可读性字符串。status只是名稱
+            在models.py中已定義好-->
+            <td>{{item.get_status_display}}</td>
+            <td>{{logitem.utime}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{%endblock%}
