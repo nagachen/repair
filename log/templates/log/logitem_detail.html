@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+  <div class="card-header">
+    <div class="h3">{{ object.subject }}</div>
+  </div>
+  <div class="card-body">
+    <div class="card-text">
+      {{ object.description|linebreaks }}
+    </div>
+  </div>
+  <div class="card-footer card-text d-flex justify-content-between text-muted">
+    <small title="報修人"><i class="fas fa-user"></i> {{ object.reporter }} <i class="fas fa-phone"></i> {{ object.phone }}</small>
+    <small><i class="far fa-clock"></i> {{ object.publication_date }}</small>
+  </div>
+</div>
+<hr>
+<div class="card mt-3">
+  <div class="card-header d-flex justify-content-between">
+    <div class="h3">處理狀況說明</div>
+    <div>{{ object.get_status_display }}</div>
+  </div>
+  <div class="card-body">{{ object.comment|default:"尚無留言"|linebreaks }}</div>
+  <div class="card-footer card-text d-flex justify-content-between text-muted">
+    <small title="處理人員"><i class="fas fa-user-md"></i> {{ object.handler }}</small>
+    <small><i class="far fa-clock"></i> {{ object.handle_date }}</small>
+  </div>
+</div>
+{% endblock %}

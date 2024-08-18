@@ -16,7 +16,7 @@ class LogItem(models.Model):
     ctime = models.DateTimeField('報修時間',auto_now_add=True)
     handler = models.CharField('處理人員',max_length=30)
     status = models.IntegerField('處理進度',default=0,choices=ST_OPTIONS)
-    comment = models.TimeField('處理說明')
+    comment = models.TextField('處理說明')
     utime = models.DateTimeField('更新時間',auto_now=True)
     
     def __str__(self):
