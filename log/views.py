@@ -14,7 +14,8 @@ from .models import LogItem
 class LogList(ListView):
     model = LogItem
     ordering = ['-id']
-
+    paginate_by=5
+   
 # 檢視報修項目
 class LogView(DetailView):
   model = LogItem

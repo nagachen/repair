@@ -26,9 +26,10 @@ Django 會自動為你查詢對應的模型，並將查詢結果作為 object_li
             <!--get_status_display: 是一个 Django 提供的特殊方法，用于获取字段的 choices 中定义的可读性字符串。status只是名稱
             在models.py中已定義好-->
             <td>{{item.get_status_display}}</td>
-            <td>{{logitem.utime}}</td>
+            <td>{{item.utime}}</td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
+{% include 'pagination.html'%}
 {%endblock%}
