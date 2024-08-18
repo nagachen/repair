@@ -21,6 +21,23 @@
             <i class="fas fa-edit"></i> 我要報修
           </a>
         </li>
+        {% if user.is_authenticated%}
+        <li class="nav-item">
+          
+          <form method="post" action="{% url 'logout' %}" class="nav-link">
+            {% csrf_token %}          
+            <button type="submit" ><i class="fas fa-sign-out-alt"></i>{{user.username}}
+              登出</button> 
+          </form>
+          
+        </li>
+        {%else%}
+        <li class="nav-item">
+          <a href="{% url 'login'%}" class="nav-link"><i class="fas fa-sign-in-alt">       
+            </i>登入</a>
+          </a>
+        </li>
+        {%endif%}
       </ul>
     </div>
   </nav>
