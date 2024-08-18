@@ -20,7 +20,11 @@
 <div class="card mt-3">
   <div class="card-header d-flex justify-content-between">
     <div class="h3">處理狀況說明</div>
-    <div>{{ object.get_status_display }}</div>
+    <div>
+        <span class="badge text-bg-{{object.get_status_class}}">
+        {{ object.get_status_display }}
+        </span>
+    </div>
   </div>
   <div class="card-body">{{ object.comment|default:"尚無留言"|linebreaks }}</div>
   <div class="card-footer card-text d-flex justify-content-between text-muted">
